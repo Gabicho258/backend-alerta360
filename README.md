@@ -4,6 +4,7 @@
 - npm (installed by default with NodeJs)
 - Database in MongoDB (for example, MongoDb Atlas) 
 
+### Steps to run de app in localhost
 1. Run `npm install`
 2. Rename file `example.env` to `.env` and add URL credentials to connect to the database
 3. Run `npm run dev`
