@@ -8,6 +8,7 @@ const incidentSchema = {
   date: Date,
   evidence: Array,
   user_id: String,
+  title: String,
 };
 
 const Incident = mongoose.model(

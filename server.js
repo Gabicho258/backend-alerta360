@@ -31,7 +31,11 @@ const app = express();
 //   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
 //   allowedHeaders: "Content-Type,Authorization",
 // };
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 // app.use(cors(corsOptions));
 // app.options("*", cors(corsOptions));
 app.use(express.json());
