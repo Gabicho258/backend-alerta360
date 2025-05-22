@@ -46,7 +46,7 @@ app.use("/api/v1", ChatRouter);
 app.use("/api/v1", MessageRouter);
 app.use("/api/v1", IncidentRouter);
 
-app.use("/api/v1", (req, res) => {
+app.use("/", (req, res) => {
   res.send("Alerta360 API RESTful is running");
 });
 
