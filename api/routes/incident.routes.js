@@ -20,10 +20,10 @@ const INCIDENT_ROUTES = {
   DELETE: "/incident/delete/:id",
 };
 
-router.get(INCIDENT_ROUTES.GET_ALL, getAllRecipes);
-router.get(INCIDENT_ROUTES.GET_ONE, getOneRecipe);
-router.put(INCIDENT_ROUTES.UPDATE, updateRecipe);
-router.post(INCIDENT_ROUTES.CREATE, /*isAuthenticated*/ createRecipe);
-router.delete(INCIDENT_ROUTES.DELETE, deleteRecipe);
+router.get(INCIDENT_ROUTES.GET_ALL, getAllIncidents);
+router.get(INCIDENT_ROUTES.GET_ONE, getOneIncident);
+router.put(INCIDENT_ROUTES.UPDATE, updateIncident);
+router.post(INCIDENT_ROUTES.CREATE, /*isAuthenticated*/ createIncident);
+router.delete(INCIDENT_ROUTES.DELETE, deleteIncident);
 
 export default router;

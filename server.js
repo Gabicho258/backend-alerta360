@@ -13,7 +13,7 @@ import "dotenv/config.js";
 
 // Connect with Mongo DB atlas
 
-const dbURI = process.env.DB_URI;
+const dbURI = process.env.DB_CONNECTION;
 
 await mongoose
   .connect(dbURI)
