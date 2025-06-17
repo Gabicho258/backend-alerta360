@@ -41,7 +41,6 @@ export const updateIncident = async (req, res) => {
 
 export const deleteIncident = async (req, res) => {
   const { id: incident_id } = req.params;
-  const recipeToDelete = req.body;
 
   try {
     const incidentDeleted = await Incident.findByIdAndDelete(incident_id);

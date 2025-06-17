@@ -7,6 +7,7 @@ const incidentSchema = {
   geolocation: String,
   date: Date,
   evidence: Array,
+  district: String,
   user_id: String,
   title: String,
 };
