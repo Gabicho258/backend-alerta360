@@ -1,6 +1,10 @@
 import mongoose from "mongoose";
 
 const userSchema = {
+  _id: {
+    type: String,    
+    required: true    
+  },
   first_name: String,
   last_name: String,
   email: String,
