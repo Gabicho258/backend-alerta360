@@ -5,11 +5,23 @@ const incidentSchema = {
   incidentType: String,
   ubication: String,
   geolocation: String,
-  date: Date,
   evidence: Array,
-  district: String,
   user_id: String,
   title: String,
+  // Nuevos campos opcionales para FCM (no rompen compatibilidad)
+  district: {
+    type: String,
+    default: null,
+  },
+  notificationSent: {
+    type: Boolean,
+    default: false,
+  },
+  priority: {
+    type: String,
+    enum: ["low", "medium", "high", "emergency"],
+    default: "medium",
+  },
 };
 
 const Incident = mongoose.model(
