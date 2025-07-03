@@ -40,7 +40,9 @@ export const createIncident = async (req, res) => {
         try {
           // Verificar que el incidente tenga _id antes de enviar notificación
           const idString = incident._id.toString();
-          if (incident._id.toString()) {
+          console.log("idString", idString);
+          console.log("incident", incident);
+          if (idString) {
             const result = await fcmService.sendNewIncidentNotification(
               incident
             );
