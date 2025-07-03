@@ -29,6 +29,7 @@ export const getAllIncidents = async (req, res) => {
 export const createIncident = async (req, res) => {
   try {
     const newIncident = new Incident({ ...req.body });
+    console.log("boddy", req.body);
     const incident = await newIncident.save();
     console.log("incidentBefore", incident);
     if (incident) {
