@@ -30,7 +30,7 @@ export const createIncident = async (req, res) => {
   try {
     const newIncident = new Incident({ ...req.body });
     const incident = await newIncident.save();
-
+    console.log("incidentBefore", incident);
     if (incident) {
       // Enviar respuesta inmediatamente
       res.status(201).json(incident);
@@ -39,9 +39,9 @@ export const createIncident = async (req, res) => {
       setImmediate(async () => {
         try {
           // Verificar que el incidente tenga _id antes de enviar notificación
+          console.log("incident", incident);
           const idString = incident._id.toString();
           console.log("idString", idString);
-          console.log("incident", incident);
           if (idString) {
             const result = await fcmService.sendNewIncidentNotification(
               incident
