@@ -7,7 +7,6 @@ const {
   getAllUsers,
   updateUser,
   getOneUser,
-  login,
   // Nuevos métodos FCM
   updateFcmToken,
   updateNotificationPreferences,
@@ -17,15 +16,15 @@ const {
 const router = express.Router();
 
 const USER_ROUTES = {
-  // Rutas existentes (sin cambios)
-  GET_ALL: "/user",
-  GET_ONE: "/user/:id",
-  CREATE: "/user/create",
-  UPDATE: "/user/update/:id",
+  // Rutas existentes (sin /user ya que se monta en /api/v1/user)
+  GET_ALL: "/",
+  GET_ONE: "/:id",
+  CREATE: "/create",
+  UPDATE: "/update/:id",
   // Nuevas rutas para FCM
-  UPDATE_FCM_TOKEN: "/user/:id/fcm-token",
-  UPDATE_NOTIFICATION_PREFERENCES: "/user/:id/notification-preferences",
-  SUBSCRIBE_LOCATION: "/user/:id/subscribe-location",
+  UPDATE_FCM_TOKEN: "/:id/fcm-token",
+  UPDATE_NOTIFICATION_PREFERENCES: "/:id/notification-preferences",
+  SUBSCRIBE_LOCATION: "/:id/subscribe-location",
 };
 
 // Rutas existentes (sin cambios)

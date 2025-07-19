@@ -6,8 +6,9 @@ const { createMessage, getMessages } = MessageController;
 const router = express.Router();
 
 const MESSAGE_ROUTES = {
-  CREATE: "/message/create",
-  GET_MESSAGES: "/message/:id",
+  // Sin /message ya que se monta en /api/v1/message
+  CREATE: "/create",
+  GET_MESSAGES: "/:id",
 };
 
 router.post(MESSAGE_ROUTES.CREATE, createMessage);
