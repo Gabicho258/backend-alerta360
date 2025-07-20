@@ -1,4 +1,33 @@
 import { Message, Chat, User } from "../models/index.js";
+import wsManager from "../../config/websocket.js";
+
+// Función para actualizar último mensaje del chat
+const updateChatLastMessage = async (chatId, messageData) => {
+  try {
+    await Chat.findByIdAndUpdate(chatId, {
+      lastMessage: {
+        text: messageData.text,
+        sender_id: messageData.sender_id,
+        sender_name: messageData.sender_name,
+        timestamp: new Date(),
+      },
+      $inc: { messageCount: 1 },
+    }, {new: true});
+
+    const updatedChat = await Chat.findById(chatId);
+    if (updatedChat) {
+      wsManager.broadcastToChat(chatId, "chat_updated", {
+        chatId: updatedChat._id,
+        lastMessage: updatedChat.lastMessage,
+        messageCount: updatedChat.messageCount,
+      });
+    }
+
+    console.log("✅ Chat last message updated for:", chatId);
+  } catch (error) {
+    console.error("❌ Error updating chat last message:", error);
+  }
+};
 
 // MÉTODO EXISTENTE (mantener compatibilidad)
 export const createMessage = async (req, res) => {
@@ -87,23 +116,7 @@ export const getMessages = async (req, res) => {
   }
 };
 
-// Función para actualizar último mensaje del chat
-const updateChatLastMessage = async (chatId, messageData) => {
-  try {
-    await Chat.findByIdAndUpdate(chatId, {
-      lastMessage: {
-        text: messageData.text,
-        sender_id: messageData.sender_id,
-        sender_name: messageData.sender_name,
-        timestamp: new Date(),
-      },
-      $inc: { messageCount: 1 },
-    });
-    console.log("✅ Chat last message updated for:", chatId);
-  } catch (error) {
-    console.error("❌ Error updating chat last message:", error);
-  }
-};
+
 
 // NUEVO MÉTODO: Crear mensaje para WebSocket
 export const createMessageWS = async (messageData) => {
