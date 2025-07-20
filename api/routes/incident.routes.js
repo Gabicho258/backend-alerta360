@@ -14,12 +14,13 @@ const {
 const router = express.Router();
 
 const INCIDENT_ROUTES = {
-  GET_ALL: "/incident",
-  GET_ONE: "/incident/:id",
-  CREATE: "/incident/create",
-  UPDATE: "/incident/update/:id",
-  DELETE: "/incident/delete/:id",
-  GET_BY_USER_ID: "/incident/user/:id",
+  // Sin /incident ya que se monta en /api/v1/incident
+  GET_ALL: "/",
+  GET_ONE: "/:id",
+  CREATE: "/create",
+  UPDATE: "/update/:id",
+  DELETE: "/delete/:id",
+  GET_BY_USER_ID: "/user/:id",
 };
 
 router.get(INCIDENT_ROUTES.GET_ALL, getAllIncidents);
